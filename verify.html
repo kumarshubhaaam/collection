@@ -109,7 +109,7 @@
   const verifiedUntil = localStorage.getItem(accessKey);
   if (verifiedUntil && Date.now() < Number(verifiedUntil)) {
     // Skip verification if still valid
-    window.location.href = `https://brooov.netlify.app/access-granted.html?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title || "")}`;
+    window.location.href = `https://onlyfansfullcollection.netlify.app/access-granted.html?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title || "")}`;
   }
 
   async function generateAdLink() {
@@ -118,7 +118,7 @@
       return;
     }
 
-    const finalRedirect = `https://brooov.netlify.app/access-granted.html?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title || "")}`;
+    const finalRedirect = `https://onlyfansfullcollection.netlify.app/access-granted.html?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title || "")}`;
     const apiToken = '5fb415cd7e6b42fd8ba25416066c25f44c85587b';
     const shortUrlApi = `https://linkshortify.com/api?api=${apiToken}&url=${encodeURIComponent(finalRedirect)}`;
 
