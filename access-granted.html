@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Access Granted</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background: #d3d3d3;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.1em;
+    }
+
+    /* Responsive text for mobile */
+    @media (max-width: 600px) {
+      h2 {
+        font-size: 1.8em;
+        color: #000;
+      }
+      p {
+        font-size: 1.3em;
+        color: #000;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>Access Granted</h2>
+  <p>Redirecting to your stream content...</p>
+
+  <script>
+    // Save 24-hour access flag
+    const expiresAt = Date.now() + (24 * 60 * 60 * 1000);
+    localStorage.setItem('verifiedUntil', expiresAt);
+
+    // Get URL and title from query params
+    const params = new URLSearchParams(window.location.search);
+    const rawUrl = params.get('url') || '';
+    const title = params.get('title');
+
+    // Build redirect target
+    let target = `/stream.html?url=${encodeURIComponent(rawUrl)}`;
+    if (title) {
+      target += `&title=${encodeURIComponent(title)}`;
+    }
+
+    // Redirect after short delay
+    setTimeout(() => {
+      window.location.href = target;
+    }, 2000);
+  </script>
+</body>
+</html>
