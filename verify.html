@@ -5,15 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Verify Task</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LJ0LW2K03F"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-LJ0LW2K03F');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NL42K9HXB6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NL42K9HXB6');
+  </script>
+
   <style>
     body {
       margin: 0;
@@ -70,25 +71,6 @@
       font-weight: bold;
     }
   </style>
-
-  <!-- Light Theme Overrides -->
-  <style id="light-theme">
-    body {
-      background: #f7f7f7 !important;
-      color: #111 !important;
-    }
-    .card {
-      background: linear-gradient(145deg, #ffffff, #e2e2e2) !important;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1) !important;
-    }
-    .btn {
-      color: white !important;
-    }
-    .notice-box {
-      background: rgba(0, 0, 0, 0.05) !important;
-      color: #333 !important;
-    }
-  </style>
 </head>
 <body>
   <div class="card">
@@ -118,7 +100,7 @@
   const verifiedUntil = localStorage.getItem(accessKey);
   if (verifiedUntil && Date.now() < Number(verifiedUntil)) {
     // Skip verification if still valid
-    window.location.href = `https://onlyfansfullcollection.netlify.app/access-granted.html?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title || "")}`;
+    window.location.href = `https://brooov.netlify.app/access-granted.html?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title || "")}`;
   }
 
   async function generateAdLink() {
@@ -128,7 +110,7 @@
     }
 
     const finalRedirect = `https://onlyfansfullcollection.netlify.app/access-granted.html?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title || "")}`;
-    const apiToken = '5fb415cd7e6b42fd8ba25416066c25f44c85587b';
+    const apiToken = '067989ffeb7fa279b3aa7036dff92a50b5b75492';
     const shortUrlApi = `https://linkshortify.com/api?api=${apiToken}&url=${encodeURIComponent(finalRedirect)}`;
 
     const btn = document.querySelector('.verify-btn');
@@ -156,6 +138,6 @@
       btn.textContent = "Click Here To Verify Task";
     }
   }
-</script>
+  </script>
 </body>
 </html>
