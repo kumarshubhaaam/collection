@@ -6,15 +6,7 @@
   <meta name="theme-color" content="#1c1c1c">
   <title>Stream</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LJ0LW2K03F"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-LJ0LW2K03F');
-</script>
   <style>
     * {
       margin: 0;
@@ -24,11 +16,11 @@
     }
 
     body {
-  background: linear-gradient(to bottom right, #f2f4ff, #fff1f9);
-  color: #1a1a1a;
-  overflow-x: hidden;
-  min-height: 100vh;
-}
+      background-color: #0a0a0a;
+      color: white;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
 
     #particles-bg {
       position: fixed;
@@ -39,33 +31,6 @@
       z-index: -1;
       pointer-events: none;
     }
-
-    header {
-  background: linear-gradient(to right, #6200ea, #03dac6);
-  padding: 1.5rem;
-  text-align: center;
-  color: white;
-}
-
-.logo {
-  font-size: 2.5rem;
-  font-weight: bold;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo span:first-child {
-  color: white;
-}
-
-.logo span:last-child {
-  color: white;
-  background: #ff4081;
-  padding: 0 0.5rem;
-  border-radius: 0.4rem;
-  margin-left: 0.4rem;
-}
 
     .card {
       background-color: #1c1c1c;
@@ -216,10 +181,7 @@
 </head>
 <body>
 <canvas id="particles-bg"></canvas>
-<header>
-  <div class="logo"><span>ONLY</span> <span>FANS</span></div>
-</header>
-<br>
+<br><br><br><br>
 <div class="button-wrapper">
   <a href="index.html" class="back-home-btn">Back</a>
 </div>
@@ -238,27 +200,21 @@
   </div>
 </div>
 
-<div class="footer">
-  &copy; 2025 ONLY FANS. All rights reserved.
-</div>
-
 <script>
   const urlParams = new URLSearchParams(window.location.search);
   const streamUrl = urlParams.get('url');
   const title = urlParams.get('title') || "Streaming...";
 
-  // Check verification time (24 hours)
-  const verifiedUntil = parseInt(localStorage.getItem('verifiedUntil') || '0', 10);
-  const now = Date.now();
-
   const streamCard = document.getElementById("streamCard");
   const verificationLock = document.getElementById("verificationLock");
 
+  const verifiedUntil = parseInt(localStorage.getItem('verifiedUntil') || '0', 10);
+  const now = Date.now();
+
   if (verifiedUntil > now) {
-    // Verified and still valid
     showStream();
   } else {
-    // Not verified or expired
+    localStorage.removeItem('verifiedUntil');
     verificationLock.style.display = "block";
   }
 
@@ -282,9 +238,8 @@
   }
 
   function startVerification() {
-    // Generate shortlink to redirect user to verify.html with current page as redirect url
     const currentUrl = encodeURIComponent(window.location.href);
-    const apiToken = '5fb415cd7e6b42fd8ba25416066c25f44c85587b';
+    const apiToken = '067989ffeb7fa279b3aa7036dff92a50b5b75492';
     const apiUrl = `https://linkshortify.com/api?api=${apiToken}&url=${currentUrl}`;
 
     fetch(apiUrl)
@@ -299,8 +254,7 @@
       .catch(() => alert("Failed to generate ad link."));
   }
 
-  // Particle background animation
-
+  // Particle background
   const canvas = document.getElementById('particles-bg');
   const ctx = canvas.getContext('2d');
   let particles = [];
@@ -327,7 +281,7 @@
       if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
     }
     draw() {
-      ctx.fillStyle = 'rgb(211 211 211)';
+      ctx.fillStyle = '#fff';
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fill();
@@ -352,7 +306,6 @@
 
   initParticles();
   animateParticles();
-
 </script>
 </body>
 </html>
