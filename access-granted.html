@@ -3,20 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Access Granted</title>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LJ0LW2K03F"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LJ0LW2K03F');
-</script>
   <style>
     body {
       margin: 0;
       font-family: 'Outfit', sans-serif;
-      background: #d3d3d3;
+      background: #000;
       color: white;
       display: flex;
       flex-direction: column;
@@ -32,15 +23,12 @@
       font-size: 1.1em;
     }
 
-    /* Responsive text for mobile */
     @media (max-width: 600px) {
       h2 {
         font-size: 1.8em;
-        color: #000;
       }
       p {
         font-size: 1.3em;
-        color: #000;
       }
     }
   </style>
@@ -50,22 +38,23 @@
   <p>Redirecting to your stream content...</p>
 
   <script>
-    // Save 24-hour access flag
+    // Set 24-hour access
     const expiresAt = Date.now() + (24 * 60 * 60 * 1000);
-    localStorage.setItem('verifiedUntil', expiresAt);
+    localStorage.setItem('verifiedUntil', expiresAt.toString());
+    console.log("✅ Access granted until:", new Date(expiresAt));
 
-    // Get URL and title from query params
+    // Get URL and title
     const params = new URLSearchParams(window.location.search);
     const rawUrl = params.get('url') || '';
     const title = params.get('title');
 
-    // Build redirect target
+    // Build stream redirect URL
     let target = `/stream.html?url=${encodeURIComponent(rawUrl)}`;
     if (title) {
       target += `&title=${encodeURIComponent(title)}`;
     }
 
-    // Redirect after short delay
+    // Redirect after 2 seconds
     setTimeout(() => {
       window.location.href = target;
     }, 2000);
