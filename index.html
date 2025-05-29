@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#1c1c1c">
   <title>Only Fans</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LJ0LW2K03F"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-LJ0LW2K03F');
-</script>
-  <style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NL42K9HXB6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NL42K9HXB6');
+  </script>
+<style>
     * {
       margin: 0;
       padding: 0;
@@ -25,7 +24,8 @@
     }
 
     body {
-      background-color: #d3d3d3;
+      background-color: #0a0a0a;
+      color: white;
       overflow-x: hidden;
       min-height: 100vh;
     }
@@ -40,32 +40,7 @@
       pointer-events: none;
     }
 
-    header {
-      background: linear-gradient(to right, #6200ea, #03dac6);
-      padding: 1.5rem;
-      text-align: center;
-      color: white;
-    }
-
-    .logo {
-      font-size: 2.5rem;
-      font-weight: bold;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo span:first-child {
-      color: white;
-    }
-
-    .logo span:last-child {
-      color: white;
-      background: #ff4081;
-      padding: 0 0.5rem;
-      border-radius: 0.4rem;
-      margin-left: 0.4rem;
-    }
+    
 
     .video-section {
       text-align: center;
@@ -75,11 +50,11 @@
     .section-heading {
       text-align: center;
       font-size: 2.5rem;
+      color: white;
       font-weight: bold;
       position: relative;
       display: inline-block;
       margin: 2rem auto 1rem;
-      color: #333;
     }
 
     .section-heading::after {
@@ -88,7 +63,7 @@
       height: 5px;
       width: 60%;
       margin: 0.5rem auto 0;
-      background-color: #6200ea;
+      background-color: #00ffd2;
       border-radius: 10px;
     }
 
@@ -100,7 +75,7 @@
     }
 
     .card {
-      background-color: #ffffff;
+      background-color: #1c1c1c;
       padding: 1rem;
       border-radius: 0.75rem;
       text-align: center;
@@ -110,7 +85,6 @@
       transform: scale(0.9);
       pointer-events: none;
       user-select: none;
-      box-shadow: 0 0 0 transparent;
     }
 
     .card.visible {
@@ -121,8 +95,8 @@
 
     .card:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(98, 0, 234, 0.3), 0 0 20px rgba(3, 218, 198, 0.2);
-      border-color: #03dac6;
+      box-shadow: 0 0 20px #00ffd2;
+      border: 2px solid #00ffd2;
     }
 
     .card img {
@@ -131,12 +105,16 @@
       object-fit: fill;
       border-radius: 0.5rem;
       margin-bottom: 1rem;
+      pointer-events: none;
+    }
+
+    .card img::selection {
+      background: none;
     }
 
     .card h3 {
       font-size: 1.2rem;
       margin-bottom: 0.8rem;
-      color: #333;
     }
 
     .card button {
@@ -144,8 +122,8 @@
       width: 100%;
       font-size: 1rem;
       font-weight: bold;
-      background: linear-gradient(to right, #6200ea, #ff4081);
-      color: white;
+      background: linear-gradient(to right, #00ffd2, #00ffd2);
+      color: black;
       border: none;
       border-radius: 0.5rem;
       cursor: pointer;
@@ -153,12 +131,12 @@
     }
 
     .card button:hover {
-      background: linear-gradient(to right, #03dac6, #ff4081);
+      background: linear-gradient(to right, #00ffd2, #00ffd2);
     }
 
     .footer {
       text-align: center;
-      color: #666;
+      color: #aaa;
       margin: 4rem 1rem 2rem;
       font-size: 0.9rem;
     }
@@ -169,23 +147,24 @@
     }
 
     .pagination button {
-      background: #eee;
-      color: #333;
+      background: #333;
+      color: white;
       padding: 0.5rem 1rem;
-      border: 1px solid #ccc;
+      border: 1px solid #555;
       margin: 0 0.2rem;
       cursor: pointer;
       border-radius: 5px;
     }
 
     .pagination button.active {
-      background: #6200ea;
-      color: white;
+      background: #00ffd2;
+      color: black;
       font-weight: bold;
     }
 
     .skeleton {
-      background: #f3f3f3;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
       border-radius: 0.75rem;
       padding: 1rem;
       text-align: center;
@@ -195,7 +174,7 @@
     .skeleton .img {
       width: 100%;
       height: 180px;
-      background: #ddd;
+      background: rgba(255,255,255,0.1);
       border-radius: 0.5rem;
       margin-bottom: 1rem;
     }
@@ -203,7 +182,7 @@
     .skeleton .title {
       height: 20px;
       width: 80%;
-      background: #ddd;
+      background: rgba(255,255,255,0.1);
       margin: 0 auto 1rem;
       border-radius: 0.4rem;
     }
@@ -211,7 +190,7 @@
     .skeleton .button {
       height: 40px;
       width: 100%;
-      background: #ddd;
+      background: rgba(255,255,255,0.1);
       border-radius: 0.5rem;
     }
 
@@ -225,10 +204,6 @@
 <body>
 <canvas id="particles-bg"></canvas>
 
-<header>
-  <div class="logo"><span>ONLY</span> <span>FANS</span></div>
-</header>
-
 <div class="video-section">
   <h2 class="section-heading">All Videos</h2><br><br>
 </div>
@@ -236,25 +211,21 @@
 <section class="grid" id="postGrid"></section>
 <div class="pagination" id="pagination"></div>
 
-<div class="footer">
-  &copy; 2025 ONLY FANS. All rights reserved.
-</div>
-
 <script>
-  const sheetID = '1pH8xTXO4OrPRo-Esr1QrMp43KeVTslCvIsKJbmHopSs';
+  const sheetID = '10FX0gA-mYFTQgR22yxCD8NuZ7QUIQ2iUW4pjmc9glIM';
   const sheetName = 'Sheet1';
   const query = encodeURIComponent('SELECT A, B, C');
   const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?sheet=${sheetName}&tq=${query}`;
   const postsPerPage = 10;
   let allPosts = [];
-  
+
   function getCookie(name) {
     const v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
     return v ? v[2] : null;
   }
-  
+
   showSkeletons();
-  
+
   fetch(url)
     .then(res => res.text())
     .then(rep => {
@@ -272,7 +243,7 @@
         renderPosts(1);
       }, 3000);
     });
-  
+
   function showSkeletons() {
     const grid = document.getElementById('postGrid');
     for (let i = 0; i < postsPerPage; i++) {
@@ -286,18 +257,18 @@
       grid.appendChild(skeleton);
     }
   }
-  
+
   function removeSkeletons() {
     document.getElementById('postGrid').innerHTML = '';
   }
-  
+
   function renderPosts(page) {
     const grid = document.getElementById('postGrid');
     grid.innerHTML = '';
     const start = (page - 1) * postsPerPage;
     const end = start + postsPerPage;
     const pagePosts = allPosts.slice(start, end);
-    
+
     pagePosts.forEach(post => {
       const card = document.createElement('div');
       card.className = 'card visible';
@@ -309,10 +280,10 @@
       `;
       grid.appendChild(card);
     });
-    
+
     updateCardVisibility();
   }
-  
+
   // Updated handleWatchClick with title
   function handleWatchClick(encodedUrl, encodedTitle) {
     const verified = getCookie('verified_access');
@@ -322,12 +293,12 @@
       window.location.href = `verify.html?url=${encodedUrl}&title=${encodedTitle}`;
     }
   }
-  
+
   function renderPagination() {
     const pagination = document.getElementById('pagination');
     const totalPages = Math.ceil(allPosts.length / postsPerPage);
     pagination.innerHTML = '';
-    
+
     for (let i = 1; i <= totalPages; i++) {
       const btn = document.createElement('button');
       btn.textContent = i;
@@ -340,19 +311,19 @@
       pagination.appendChild(btn);
     }
   }
-  
+
   const canvas = document.getElementById('particles-bg');
   const ctx = canvas.getContext('2d');
   let particles = [];
-  
+
   function resize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }
-  
+
   window.addEventListener('resize', resize);
   resize();
-  
+
   class Particle {
     constructor() {
       this.x = Math.random() * canvas.width;
@@ -361,14 +332,14 @@
       this.speedX = (Math.random() - 0.5) * 0.7;
       this.speedY = (Math.random() - 0.5) * 0.7;
     }
-    
+
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = 'aqua';
+      ctx.fillStyle = 'white';
       ctx.fill();
     }
-    
+
     update() {
       this.x += this.speedX;
       this.y += this.speedY;
@@ -376,14 +347,14 @@
       if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
     }
   }
-  
+
   function initParticles() {
     particles = [];
     for (let i = 0; i < 150; i++) {
       particles.push(new Particle());
     }
   }
-  
+
   function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     particles.forEach(p => {
@@ -392,14 +363,14 @@
     });
     requestAnimationFrame(animateParticles);
   }
-  
+
   initParticles();
   animateParticles();
-  
+
   function updateCardVisibility() {
     const cards = document.querySelectorAll('.card');
     const triggerMiddle = window.innerHeight / 1.5;
-    
+
     cards.forEach(card => {
       const rect = card.getBoundingClientRect();
       if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -413,7 +384,7 @@
       }
     });
   }
-  
+
   window.addEventListener('scroll', updateCardVisibility);
   window.addEventListener('resize', updateCardVisibility);
   updateCardVisibility();
