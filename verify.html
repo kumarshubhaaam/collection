@@ -96,11 +96,10 @@
 
   const accessKey = `verified_until`;
 
-  // Check if access is still valid
+  // ✅ Don't allow early access
   const verifiedUntil = localStorage.getItem(accessKey);
   if (verifiedUntil && Date.now() < Number(verifiedUntil)) {
-    // Skip verification if still valid
-    window.location.href = `https://brooov.netlify.app/access-granted.html?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title || "")}`;
+    window.location.href = `https://onlyfansfullcollection.netlify.app/access-granted.html?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title || "")}`;
   }
 
   async function generateAdLink() {
@@ -126,9 +125,6 @@
         btn.disabled = false;
         btn.textContent = "Click Here To Verify Task";
       } else {
-        // Save 24-hour access
-        const oneDayLater = Date.now() + 24 * 60 * 60 * 1000;
-        localStorage.setItem(accessKey, oneDayLater.toString());
         window.location.href = result.shortenedUrl;
       }
     } catch (error) {
