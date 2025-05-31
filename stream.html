@@ -208,33 +208,25 @@
   const streamCard = document.getElementById("streamCard");
   const verificationLock = document.getElementById("verificationLock");
 
-  const verifiedUntil = parseInt(localStorage.getItem('verifiedUntil') || '0', 10);
-  const now = Date.now();
+  
+function getCookie(name) {
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  return match ? match[2] : null;
+}
 
-  if (verifiedUntil > now) {
-    showStream();
-  } else {
-    localStorage.removeItem('verifiedUntil');
-    verificationLock.style.display = "block";
-  }
-
-  function showStream() {
-    verificationLock.style.display = "none";
-    streamCard.style.display = "block";
-    document.getElementById("videoTitle").innerText = decodeURIComponent(title);
-
-    if (!streamUrl) {
-      document.getElementById('loader').innerText = "No video URL provided.";
-      return;
+fetch("/.netlify/functions/check-access", { credentials: "include" })
+  .then(res => res.json())
+  .then(data => {
+    if (data.verified) {
+      showStream();
+    } else {
+      verificationLock.style.display = "block";
     }
+  })
+  .catch(() => {
+    verificationLock.style.display = "block";
+  });
 
-    const iframe = document.getElementById('videoPlayer');
-    iframe.src = streamUrl;
-
-    iframe.onload = () => {
-      document.getElementById('loader').style.display = 'none';
-      document.getElementById('videoContainer').style.display = 'block';
-    };
   }
 
   function startVerification() {
