@@ -41,6 +41,7 @@
     // Set 24-hour access
     const expiresAt = Date.now() + (24 * 60 * 60 * 1000);
     localStorage.setItem('verifiedUntil', expiresAt.toString());
+    document.cookie = "verified_access=true; max-age=86400; path=/";
     console.log("✅ Access granted until:", new Date(expiresAt));
 
     // Get URL and title
