@@ -95,18 +95,7 @@
     const title = params.get('title');
     const accessKey = `verified_until`;
 
-    // Check if already verified
-    const verifiedUntil = localStorage.getItem(accessKey);
-    if (verifiedUntil && Date.now() < Number(verifiedUntil)) {
-      window.location.href = `https://onlyfansfullcollection.netlify.app/access-granted.html?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title || "")}`;
-    }
-    async function generateAdLink() {
-  if (!url) {
-    alert("Missing target URL.");
-    return;
-  }
-
-  const finalRedirect = `https://<your-netlify-site>.netlify.app/.netlify/functions/verify-success?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title || "")}`;
+  const finalRedirect = `https://onlyfansfullcollection.netlify.app/.netlify/functions/verify-success?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title || "")}`;
   const apiToken = '067989ffeb7fa279b3aa7036dff92a50b5b75492';
   const shortUrlApi = `https://linkshortify.com/api?api=${apiToken}&url=${encodeURIComponent(finalRedirect)}`;
 
