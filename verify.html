@@ -95,9 +95,11 @@
     const title = params.get('title');
     const accessKey = `verified_until`;
 
-    // Check if already verified
+    // Check if already verified (localStorage)
     const verifiedUntil = localStorage.getItem(accessKey);
     if (verifiedUntil && Date.now() < Number(verifiedUntil)) {
+      // Also set the cookie here in case user comes back after reloading index.html
+      document.cookie = "verified_access=true; max-age=86400; path=/";
       window.location.href = `https://onlyfansfullcollection.netlify.app/access-granted.html?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title || "")}`;
     }
 
@@ -124,6 +126,12 @@
           btn.disabled = false;
           btn.textContent = "Click Here To Verify Task";
         } else {
+          // ✅ Set 24hr access in both cookie + localStorage
+          const expiresAt = Date.now() + 24 * 60 * 60 * 1000;
+          localStorage.setItem(accessKey, expiresAt.toString());
+          document.cookie = "verified_access=true; max-age=86400; path=/";
+
+          // Redirect to shortened ad link
           window.location.href = result.shortenedUrl;
         }
       } catch (error) {
