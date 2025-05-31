@@ -90,39 +90,42 @@
   </div>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const url = params.get('url');
-    const title = params.get('title');
-    const accessKey = `verified_until`;
+  const params = new URLSearchParams(window.location.search);
+  const url = params.get('url');
+  const title = params.get('title');
 
-  const finalRedirect = `https://onlyfansfullcollection.netlify.app/.netlify/functions/verify-success?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title || "")}`;
-  const apiToken = '067989ffeb7fa279b3aa7036dff92a50b5b75492';
-  const shortUrlApi = `https://linkshortify.com/api?api=${apiToken}&url=${encodeURIComponent(finalRedirect)}`;
+  async function generateAdLink() {
+    if (!url) {
+      alert("Missing target URL.");
+      return;
+    }
 
-  const btn = document.querySelector('.verify-btn');
-  btn.disabled = true;
-  btn.textContent = "Generating...";
+    const finalRedirect = `https://onlyfansfullcollection.netlify.app/.netlify/functions/verify-success?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title || "")}`;
+    const apiToken = '067989ffeb7fa279b3aa7036dff92a50b5b75492';
+    const shortUrlApi = `https://linkshortify.com/api?api=${apiToken}&url=${encodeURIComponent(finalRedirect)}`;
 
-  try {
-    const res = await fetch(shortUrlApi);
-    const result = await res.json();
+    const btn = document.querySelector('.verify-btn');
+    btn.disabled = true;
+    btn.textContent = "Generating...";
 
-    if (result.status === 'error') {
-      alert(result.message);
+    try {
+      const res = await fetch(shortUrlApi);
+      const result = await res.json();
+
+      if (result.status === 'error') {
+        alert(result.message);
+        btn.disabled = false;
+        btn.textContent = "Click Here To Verify Task";
+      } else {
+        window.location.href = result.shortenedUrl;
+      }
+    } catch (error) {
+      console.error('LinkShortify Error:', error);
+      alert('Failed to generate ad link.');
       btn.disabled = false;
       btn.textContent = "Click Here To Verify Task";
-    } else {
-      window.location.href = result.shortenedUrl;
     }
-  } catch (error) {
-    console.error('LinkShortify Error:', error);
-    alert('Failed to generate ad link.');
-    btn.disabled = false;
-    btn.textContent = "Click Here To Verify Task";
   }
-}
-
-    
-  </script>
+</script>
 </body>
 </html>
