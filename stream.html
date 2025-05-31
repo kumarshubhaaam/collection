@@ -132,6 +132,7 @@
       margin: 4rem 1rem 2rem;
       font-size: 0.9rem;
     }
+
     .button-wrapper {
       text-align: center;
       margin-top: 1rem;
@@ -163,6 +164,7 @@
       border: 2px dashed #00ffe5;
       border-radius: 1rem;
     }
+
     .verify-btn {
       background: linear-gradient(to right, #ff6a00, #ff9472);
       padding: 12px 24px;
@@ -174,6 +176,7 @@
       font-weight: bold;
       margin-top: 1rem;
     }
+
     .verify-btn:hover {
       background: linear-gradient(to right, #ff8c42, #ffa87d);
     }
@@ -208,10 +211,16 @@
   const streamCard = document.getElementById("streamCard");
   const verificationLock = document.getElementById("verificationLock");
 
-  const verifiedUntil = parseInt(localStorage.getItem('verifiedUntil') || '0', 10);
+  function getCookie(name) {
+    const match = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return match ? match[2] : null;
+  }
+
+  const localVerifiedUntil = parseInt(localStorage.getItem('verifiedUntil') || '0', 10);
+  const cookieVerified = getCookie('verified_access') === 'true';
   const now = Date.now();
 
-  if (verifiedUntil > now) {
+  if ((localVerifiedUntil > now) || cookieVerified) {
     showStream();
   } else {
     localStorage.removeItem('verifiedUntil');
